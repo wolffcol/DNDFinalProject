@@ -1,6 +1,5 @@
 package DungeonSource;
 
-import java.util.Random;
 
 public class Dungeon
 {
@@ -19,8 +18,7 @@ public class Dungeon
     
     public Room generateRoom() {
     	
-    	Random r = new Random();	
-    	int random = r.nextInt(5) + 1;
+    	int random = (int)(Math.random()*5) + 1;
     	
     	if(random == 1 || random == 2) {
     		return new EncounterRoom();
