@@ -2,29 +2,29 @@ package DungeonSource;
 
 public class ItemRoom extends Room{
 	
-	public ItemRoom() {
-		
+	public void triggerRoom(Hero theHero) {
+		generateItem(theHero);
 	}
 	
-	public void triggerRoom() {
-		generateItem();
-	}
-	
-	public Items generateItem() {
+	public void generateItem(Hero theHero) {
 		System.out.println("Created an item");
 		int random = (int)(Math.random()*10) + 1;
 		
 		if(random <= 2) {
-			return new InvisibilityPotion();
+			System.out.println("You found an invisibility potion");
+			theHero.itemBag.addItem(new InvisibilityPotion());
 		}else if(random > 2 || random <= 4) {
-			return new AttackPotion();
+			System.out.println("You found an attack potion");
+			theHero.itemBag.addItem(new AttackPotion());
 		}else if(random > 4 || random <= 6) {
-			return new VisionPotion();
+			System.out.println("You found a vision potion");
+			theHero.itemBag.addItem(new VisionPotion());
 		}else if(random > 6 || random <= 8){
-			return new HealingPotion();
+			System.out.println("You found a healing potion");
+			theHero.itemBag.addItem(new HealingPotion());
 		}else {
 			System.out.println("Chest explodes");
-			return null;
+			theHero.subtractHitPoints(40);
 		}
 	}
 

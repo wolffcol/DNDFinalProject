@@ -3,12 +3,12 @@ package DungeonSource;
 public class EncounterRoom extends Room{
 
 	@Override
-	public void triggerRoom() {
-		generateEncounter();
+	public void triggerRoom(Hero theHero) {
+		generateEncounter(theHero);
 	}
 	
-	public void generateEncounter() {
-		System.out.println(MonsterFactory.createMonster(2).getName());
+	public void generateEncounter(Hero theHero) {
+		Battle.BattleInstance(theHero, MonsterFactory.createMonster((int)(Math.random() * 3) + 1), InitializeGame.getScanner());
 		
 	}
 

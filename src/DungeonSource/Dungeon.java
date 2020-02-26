@@ -17,7 +17,7 @@ public class Dungeon
     
     public Room generateRoom() {
     	
-    	int random = (int)(Math.random()*5) + 1;
+    	int random = (int)(Math.random()*6) + 1;
     	
     	if(random == 1 || random == 2) {
     		return new EncounterRoom();
@@ -27,11 +27,6 @@ public class Dungeon
     		return new ItemRoom();
     	}else {
     		return new EmptyRoom();
-    	}
-    	
-    }
-    
-    public void setCharacterPosition(Room[][] dungeon, int x, int y) {
-    	dungeon[x][y].characterPosition = true;
+    	}	
     }
 }

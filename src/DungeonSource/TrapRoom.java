@@ -2,33 +2,35 @@ package DungeonSource;
 
 public class TrapRoom extends Room{
 	
-	public TrapRoom() {
-		
+	
+	@Override
+	public void triggerRoom(Hero theHero) {
+		trapType(theHero);		
 	}
-	
-	
-	public void trapType() {
+
+		
+	public void trapType(Hero theHero) {
 		int type = (int)(Math.random()*3)+1;
 		
 		switch(type) {
 			case 1:
-				System.out.println("Character takes damage");
+				System.out.println("Fall into a spike trap! Lose 20 Health.");
+				theHero.subtractHitPoints(20);
 				break;
 			case 2:
-				System.out.println("Character falls into a healing fountain");
+				System.out.println("Character falls into a healing fountain. Recover 20 Health.");
+				theHero.subtractHitPoints(-20);
 				break;
 			case 3:
-				System.out.println("You lose the items in your bag");
+				System.out.println("You trip and drop your items into a black hole. Lose all your items.");
+				for(Items i: theHero.getItemBag().getItemArrayList()) {
+					theHero.itemBag.removeItem(i);
+				}
 				break;
 			default:
-				System.out.println("Character takes damage");
-				
+				System.out.println("Fall into a spike trap!. Lose 20 Health.");
+				theHero.subtractHitPoints(20);
 		}
-	}
-
-	@Override
-	public void triggerRoom() {
-		trapType();		
 	}
 
 }

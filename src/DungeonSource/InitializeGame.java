@@ -12,14 +12,13 @@ public class InitializeGame {
 		
 		Dungeon dungeon = new Dungeon();
 		Room[][] gameDungeon = dungeon.generateDungeon();
-		dungeon.setCharacterPosition(gameDungeon, 4, 4);
-		gameDungeon[4][4].triggerRoom();
 		
 		theHero = HeroFactory.createHero(scan);
-	    theMonster = MonsterFactory.createMonster((int)(Math.random() * 3) + 1);
-	 
-		Battle.BattleInstance(theHero, theMonster, scan);
 		
+		int[] startRoom = new int[] {determineStartingRoom(),determineStartingRoom()};
+		gameDungeon[startRoom[0]][startRoom[1]] = new EmptyRoom();
+		gameDungeon[startRoom[0]][startRoom[1]].characterHasBeenHere = true;
+	 	
 	}
 	
 	public static Scanner getScanner() {
@@ -34,8 +33,10 @@ public class InitializeGame {
 		return theMonster;
 	}
 	
-	
-	
-	
+	public static int determineStartingRoom() {
+		int x = (int)(((Math.random() * 6)-4) + 1);
+		
+		return x;
+	}
 
 }

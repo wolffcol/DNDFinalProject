@@ -66,15 +66,6 @@ public abstract class Hero extends DungeonCharacter
   	
   }
 
-/*-------------------------------------------------------
-readName obtains a name for the hero from the user
-
-Receives: nothing
-Returns: nothing
-
-This method calls: nothing
-This method is called by: hero constructor
----------------------------------------------------------*/
   public void readName()
   {
 		System.out.print("Enter character name: ");
@@ -84,33 +75,13 @@ This method is called by: hero constructor
   public ItemBag getItemBag() {
 	  return itemBag;
   }
-/*-------------------------------------------------------
-defend determines if hero blocks attack
 
-Receives: nothing
-Returns: true if attack is blocked, false otherwise
-
-This method calls: Math.random()
-This method is called by: subtractHitPoints()
----------------------------------------------------------*/
   public boolean defend()
   {
 		return Math.random() <= chanceToBlock;
 
   }//end defend method
 
-/*-------------------------------------------------------
-subtractHitPoints checks to see if hero blocked attack, if so a message
-is displayed, otherwise base version of this method is invoked to
-perform the subtraction operation.  This method overrides the method
-inherited from DungeonCharacter promoting polymorphic behavior
-
-Receives: hit points to subtract
-Returns: nothing
-
-This method calls: defend() or base version of method
-This method is called by: attack() from base class
----------------------------------------------------------*/
 public void subtractHitPoints(int hitPoints)
 	{
 		if (hitPoints < 0){
@@ -141,20 +112,41 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 		
 }
 
-/*-------------------------------------------------------
-battleChoices will be overridden in derived classes.  It computes the
-number of turns a hero will get per round based on the opponent that is
-being fought.  The number of turns is reported to the user.  This stuff might
-go better in another method that is invoked from this one...
+	public void nonBattleChoices(Scanner scan) {
+		
+		int choice;
+		do
+		{
+		    System.out.println("1. Move Rooms");
+		    if(itemBag.itemBag.isEmpty()) {
+		    	
+		    }else {
+		    	System.out.println("2. Use an Item");
+		    }
+		    System.out.print("Choose an option: ");
 
-Receives: opponent
-Returns: nothing
+		    choice = scan.nextInt();
+		    switch (choice)
+		    {
+			    case 1: movement();
+			    	
+			        break;
+			    case 2: useItem(this, null);
+			    	
+			        break;
+			    default:
+			        System.out.println("Choose Again \n=================\n");
+		    }//end switch
 
-This method calls: getAttackSpeed()
-This method is called by: external sources
----------------------------------------------------------*/
+		} while(choice != 1 || choice != 2);
+	}
+	
+	public void movement() {
+		
+		
+	}
 
-	//The functionality of battleChoices in the individual characters is strange, consider re-factoring
+
 	public void battleChoices(DungeonCharacter opponent, Scanner scan)
 	{
 	    numTurns = attackSpeed/opponent.getAttackSpeed();
