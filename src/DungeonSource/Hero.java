@@ -57,6 +57,7 @@ public abstract class Hero extends DungeonCharacter
   		itemBag.addItem(new AttackPotion());
   		itemBag.addItem(new VisionPotion());
   		itemBag.addItem(new InvisibilityPotion());
+  		itemBag.addItem(new HealingPotion());
   	}else if(this.getClass().toString().contains("Sorceress")) {
   		itemBag.addItem(new VisionPotion());
   	}else if(this.getClass().toString().contains("Thief")) {
@@ -112,7 +113,10 @@ This method is called by: attack() from base class
 ---------------------------------------------------------*/
 public void subtractHitPoints(int hitPoints)
 	{
-		if (defend())
+		if (hitPoints < 0){
+			super.subtractHitPoints(hitPoints);
+		}
+		else if(defend())
 		{
 			System.out.println(name + " BLOCKED the attack!");
 		}

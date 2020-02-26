@@ -6,9 +6,6 @@ public class TrapRoom extends Room{
 		
 	}
 	
-	public void trapTrigger() {
-		trapType();
-	}
 	
 	public void trapType() {
 		int type = (int)(Math.random()*3)+1;
@@ -27,6 +24,11 @@ public class TrapRoom extends Room{
 				System.out.println("Character takes damage");
 				
 		}
+	}
+
+	@Override
+	public void triggerRoom() {
+		trapType();		
 	}
 
 }

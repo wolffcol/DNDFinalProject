@@ -6,12 +6,13 @@ public class ItemRoom extends Room{
 		
 	}
 	
-	public void openChest() {
+	public void triggerRoom() {
 		generateItem();
 	}
 	
 	public Items generateItem() {
-		int random = (int)Math.random()*10;
+		System.out.println("Created an item");
+		int random = (int)(Math.random()*10) + 1;
 		
 		if(random <= 2) {
 			return new InvisibilityPotion();
@@ -19,6 +20,8 @@ public class ItemRoom extends Room{
 			return new AttackPotion();
 		}else if(random > 4 || random <= 6) {
 			return new VisionPotion();
+		}else if(random > 6 || random <= 8){
+			return new HealingPotion();
 		}else {
 			System.out.println("Chest explodes");
 			return null;

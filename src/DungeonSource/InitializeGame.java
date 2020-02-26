@@ -13,7 +13,7 @@ public class InitializeGame {
 		Dungeon dungeon = new Dungeon();
 		Room[][] gameDungeon = dungeon.generateDungeon();
 		dungeon.setCharacterPosition(gameDungeon, 4, 4);
-		System.out.println(gameDungeon[4][4].getClass().toString());
+		gameDungeon[4][4].triggerRoom();
 		
 		theHero = HeroFactory.createHero(scan);
 	    theMonster = MonsterFactory.createMonster((int)(Math.random() * 3) + 1);
