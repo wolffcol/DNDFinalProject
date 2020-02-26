@@ -8,7 +8,7 @@ public class VisionPotion extends Items{
 		return name;
 	}
 	
-	public void useItem() {
+	public void useItem(Hero theHero, DungeonCharacter theMonster) {
 		System.out.println("I used a vision potion");
 	}
 }

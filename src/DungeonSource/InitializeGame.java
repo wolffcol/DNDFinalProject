@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class InitializeGame {
 	
 	static Scanner scan = new Scanner(System.in);
-	static Hero theHero;
-	static Monster theMonster;
+	private static Hero theHero;
+	private static Monster theMonster;
 	
 	public static void BuildGame() {
 		
@@ -19,6 +19,14 @@ public class InitializeGame {
 	
 	public static Scanner getScanner() {
 		return scan;
+	}
+	
+	public static Hero getHero() {
+		return theHero;
+	}
+	
+	public static Monster getMonster() {
+		return theMonster;
 	}
 	
 	

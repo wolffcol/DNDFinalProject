@@ -6,7 +6,7 @@ public class ItemBag {
 	
 	ArrayList<Items> itemBag = new ArrayList<Items>();
 	
-	public ArrayList<Items> getItemBag(){
+	public ArrayList<Items> getItemArrayList(){
 		return itemBag;
 	}
 	
@@ -18,7 +18,6 @@ public class ItemBag {
 	
 	public void removeItem(Items item) {
 		if(itemBag.contains(item)) {
-			item.useItem();
 			itemBag.remove(item);
 		}else {
 			System.out.println("Your item bag did not contain that item");

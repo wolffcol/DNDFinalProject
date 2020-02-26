@@ -2,15 +2,6 @@ package DungeonSource;
 
 import java.util.Scanner;
 
-/**
- * Title:
- * Description:
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
-
 public class Thief extends Hero
 {
 
@@ -47,31 +38,36 @@ public class Thief extends Hero
     public void battleChoices(DungeonCharacter opponent, Scanner scan)
 	{
 		super.battleChoices(opponent, scan);
-		int choice;
-
 
 		do
 		{
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Surprise Attack");
+		    if(super.itemBag.itemBag.isEmpty()) {
+		    	
+		    }else {
+		    	System.out.println("3. Use an Item");
+		    }
 		    System.out.print("Choose an option: ");
-		    choice = Keyboard.readInt();
 
-		    switch (choice)
+		    switch (scan.nextInt())
 		    {
 			    case 1: attack(opponent);
+			    	numTurns--;
 			        break;
 			    case 2: surpriseAttack(opponent);
+			    	numTurns--;
 			        break;
+			    case 3: useItem(this, opponent);
+			    	System.out.println("Using an item is a free action!\n");
 			    default:
-			        System.out.println("invalid choice!");
+			        System.out.println("Choose Again \n=================\n");
 		    }//end switch
-
-			numTurns--;
+		    
 			if (numTurns > 0)
 			    System.out.println("Number of turns remaining is: " + numTurns);
 
-		} while(numTurns > 0);
+		} while(numTurns > 0  && hitPoints > 0 && opponent.getHitPoints() > 0);
 
     }
 }

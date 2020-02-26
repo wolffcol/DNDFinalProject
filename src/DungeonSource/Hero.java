@@ -33,6 +33,7 @@ import java.util.Scanner;
 public abstract class Hero extends DungeonCharacter
 {
 	protected double chanceToBlock;
+	protected double trueBlock;
 	protected int numTurns;
 	protected ItemBag itemBag = new ItemBag();
 
@@ -44,6 +45,7 @@ public abstract class Hero extends DungeonCharacter
   {
 	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
 	this.chanceToBlock = chanceToBlock;
+	this.trueBlock = chanceToBlock;
 	readName();
 	createBag();
   }
@@ -122,15 +124,16 @@ public void subtractHitPoints(int hitPoints)
 
 	}//end method
 
-public void useItem() {
+public void useItem(Hero theHero, DungeonCharacter opponent) {
 	
 	itemBag.printItemList();
 	
-	System.out.println("Which item would you like to use?");
+	System.out.println("Which item would you like to use: ");
 	
 	int choice = Keyboard.readInt();
-	Items itemToUse = itemBag.getItemBag().get(choice+1);
-	itemToUse.useItem();
+	itemBag.getItemArrayList().get(choice-1).useItem(theHero, opponent);
+	
+	itemBag.getItemArrayList().remove(choice-1);
 		
 }
 
@@ -158,5 +161,10 @@ This method is called by: external sources
 		System.out.println("Number of turns this round is: " + numTurns);
 
 	}//end battleChoices
+
+
+	public void clearPotionEffects() {
+		this.chanceToBlock = trueBlock;	
+	}
 
 }//end Hero class

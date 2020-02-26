@@ -2,18 +2,6 @@ package DungeonSource;
 
 import java.util.Scanner;
 
-/**
- * Title:
- * Description:
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
-
-
-
-
 public class Warrior extends Hero
 {
 
@@ -47,14 +35,6 @@ public class Warrior extends Hero
 							opponent.getName() + ":");
 		super.attack(opponent);
 	}//end override of attack method
-	
-	public void useItem() {
-		System.out.println(name + " uses an item");
-		super.useItem();
-	}
-
-
-
 
     public void battleChoices(DungeonCharacter opponent, Scanner scan)
     {
@@ -74,20 +54,21 @@ public class Warrior extends Hero
 		    switch (scan.nextInt())
 		    {
 			    case 1: attack(opponent);
+			    	numTurns--;
 			        break;
 			    case 2: crushingBlow(opponent);
+			    	numTurns--;
 			        break;
-			    case 3: useItem();
-			    	System.out.println("Using an item is a free action! Take another turn!");
+			    case 3: useItem(this, opponent);
+			    	System.out.println("Using an item is a free action!\n");
 			    default:
-			        System.out.println("invalid choice!");
+			        System.out.println("Choose Again \n=================\n");
 		    }//end switch
-
-			numTurns--;
+		    
 			if (numTurns > 0)
 			    System.out.println("Number of turns remaining is: " + numTurns);
 
-		} while(numTurns > 0);
+		} while(numTurns > 0  && hitPoints > 0 && opponent.getHitPoints() > 0);
 
     }//end battleChoices method
 

@@ -7,8 +7,12 @@ public class InvisibilityPotion extends Items {
 	public String getName() {
 		return name;
 	}
-	public void useItem() {
-		System.out.println("I used an invisibility potion");	
+	
+	public void useItem(Hero theHero, DungeonCharacter theMonster) {
+		theHero.chanceToBlock = 1.0;
+		System.out.println("\nYou now have 100% chance to block for 1 turn!");	
 	}
+	
+	
 
 }

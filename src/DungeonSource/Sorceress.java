@@ -57,23 +57,30 @@ public class Sorceress extends Hero
 		{
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Increase Hit Points");
+		    if(super.itemBag.itemBag.isEmpty()) {
+		    	
+		    }else {
+		    	System.out.println("3. Use an Item");
+		    }
 		    System.out.print("Choose an option: ");
-
 		    switch (scan.nextInt())
 		    {
 			    case 1: attack(opponent);
+			    	numTurns--;
 			        break;
 			    case 2: increaseHitPoints();
+			    	numTurns--;
 			        break;
+			    case 3: useItem(this, opponent);
+			    	System.out.println("Using an item is a free action!\n");
 			    default:
-			        System.out.println("invalid choice!");
+			        System.out.println("Choose Again \n=================\n");
 		    }//end switch
-
-			numTurns--;
-		    if (numTurns > 0)
+		    
+			if (numTurns > 0)
 			    System.out.println("Number of turns remaining is: " + numTurns);
 
-		} while(numTurns > 0 && hitPoints > 0 && opponent.getHitPoints() > 0);
+		} while(numTurns > 0  && hitPoints > 0 && opponent.getHitPoints() > 0);
 
     }//end overridden method
 

@@ -7,14 +7,15 @@ public class Battle {
 	
 	public static void BattleInstance(Hero theHero, Monster theMonster, Scanner scan) {
 	
-	char pause = 'p';
+	char[] pause = {'p'};
 	System.out.println(theHero.getName() + " battles " +
 						theMonster.getName());
 	System.out.println("---------------------------------------------");
 
 	//do battle
-	while (theHero.isAlive() && theMonster.isAlive() && pause != 'q')
+	while (theHero.isAlive() && theMonster.isAlive() && pause[0] != 'q')
 	{
+		theHero.clearPotionEffects();
 	    //hero goes first
 		theHero.battleChoices(theMonster, scan);
 
@@ -24,7 +25,7 @@ public class Battle {
 
 		//let the player bail out if desired
 		System.out.print("\n-->q to quit, anything else to continue: ");
-		pause = Keyboard.readChar();
+		pause = scan.next().toCharArray();
 
 	}//end battle loop
 

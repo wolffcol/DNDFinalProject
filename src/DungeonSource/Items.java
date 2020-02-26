@@ -2,14 +2,7 @@ package DungeonSource;
 
 public abstract class Items {
 	
-	private String name;
-	
-	public void useItem() {
-		
-	}
-	
-	public String getName() {
-		return name;
-	}
+	public abstract void useItem(Hero theHero, DungeonCharacter opponent);
+	public abstract String getName();
 
 }

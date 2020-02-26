@@ -7,8 +7,9 @@ public class AttackPotion extends Items {
 	public String getName() {
 		return name;
 	}
-	public void useItem() {
-		System.out.println("I used an attack potion");
+	public void useItem(Hero theHero, DungeonCharacter theMonster) {
+		System.out.println("You attack at Instant Speed!\n");
+		theHero.attack(theMonster);
 	}
 
 }
