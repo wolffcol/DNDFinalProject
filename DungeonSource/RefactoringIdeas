@@ -1,0 +1,24 @@
+Dungeon.java has a lot of functionality. Suffers from Large Class-DONE
+Flesh out MonsterFactory(Final Project Implementation)-Deleted the original method, moved creation to its own class-DONE
+Flesh out HeroFactory(Final Project Implementation)-Done-Deleted the original method, moved creation to its own class-DONE
+Apply Getters and Setters
+Check the comparable implementation on DungeonCharacter for necessity?-Done-Refused Bequest(Kind of)
+Generalize battleChoices to separate the amount of additional and slightly redundant code
+Deprecate Keyboard.java to Scanner implementation-DONE
+Strategy Pattern for Attack Interface(Final Project Implementation)
+Add Hitpoints and Subtract Hitpoints are the same concept, just negative and positive-Removed AddHitPoints, migrated into SubtractHitpoints-DONE
+Consider removing IsAlive() DungeonCharacter method. Has its uses but perhaps can be handled differently
+
+
+
+//Final Project Ideas
+
+Implement the gameBoard as a JPanel-Look into this
+Utilize an ArrayList as your item bag
+Level Up system for each Pillar of OO you find
+	Ask the user which stat they would like to upgrade(Hp,Attack,Dodge Chance, etc)
+Final Boss where you fight a Clone of yourself to escape the dungeon, just to employ the Cloneable Interface
+Have a readable text file to pull names from
+Have a gameController class that manages the state of the game
+Implement observer pattern as a gameController class-CONSIDERATION
+Implement a password option for saving your game ala Castlevania 3, Zombies Ate My Neighbors, etc?? IF THERE IS TIME
