@@ -4,16 +4,15 @@ package DungeonSource;
 public class Dungeon
 {
 	
-    public Room[][] dungeon = new Room[8][8];
-    
-    
-    public void generateDungeon(){
+    public Room[][] generateDungeon(){
+    	Room[][] dungeon = new Room[8][8];
     	for(int i = 0; i < dungeon.length; i++) {
     		
     		for(int j = 0; j < dungeon[0].length; j++) {
     			dungeon[i][j] = generateRoom();
     		}
     	}
+    	return dungeon;
     }
     
     public Room generateRoom() {
@@ -30,5 +29,9 @@ public class Dungeon
     		return new EmptyRoom();
     	}
     	
+    }
+    
+    public void setCharacterPosition(Room[][] dungeon, int x, int y) {
+    	dungeon[x][y].characterPosition = true;
     }
 }

@@ -10,6 +10,11 @@ public class InitializeGame {
 	
 	public static void BuildGame() {
 		
+		Dungeon dungeon = new Dungeon();
+		Room[][] gameDungeon = dungeon.generateDungeon();
+		dungeon.setCharacterPosition(gameDungeon, 4, 4);
+		System.out.println(gameDungeon[4][4].getClass().toString());
+		
 		theHero = HeroFactory.createHero(scan);
 	    theMonster = MonsterFactory.createMonster((int)(Math.random() * 3) + 1);
 	 
