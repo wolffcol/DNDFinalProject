@@ -2,34 +2,6 @@ package DungeonSource;
 
 import java.util.Scanner;
 
-/**
- * Title: Hero.java
- *
- * Description: Abstract base class for a hierarchy of heroes.  It is derived
- *  from DungeonCharacter.  A Hero has battle choices: regular attack and a
- *  special skill which is defined by the classes derived from Hero.
- *
- *  class variables (all are directly accessible from derived classes):
- *    chanceToBlock -- a hero has a chance to block an opponents attack
- *    numTurns -- if a hero is faster than opponent, their is a possibility
- *                for more than one attack per round of battle
- *
- *  class methods (all are public):
- *    public Hero(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax,
-					 double chanceToBlock)
-	  public void readName()
-	  public boolean defend()
-	  public void subtractHitPoints(int hitPoints)
-	  public void battleChoices(DungeonCharacter opponent)
-
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
-
-
 public abstract class Hero extends DungeonCharacter
 {
 	protected double chanceToBlock;
@@ -144,10 +116,13 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 	public void movement(Scanner scan) {
 		
 		int choice;
+		int dungeonSize = InitializeGame.getDungeonSize();
 		
 		int[] currentRoom = GameStateManager.getCurrentRoom();
 		
-		if(currentRoom[0] == 7 && currentRoom[1] == 7) {
+		
+		do {
+		if(currentRoom[0] == dungeonSize-1 && currentRoom[1] == dungeonSize-1) {
 			System.out.println("Move: \n"
 					+ "1: North\n"
 					+ "East is a Wall\n"
@@ -163,7 +138,7 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 					+ "4: South");
 			System.out.println("Choose an option: ");
 			choice = scan.nextInt();
-		}else if(currentRoom[0] == 7 && currentRoom[1] == 0) {
+		}else if(currentRoom[1] == (dungeonSize-1) && currentRoom[0] == 0) {
 			System.out.println("Move: \n"
 					+ "1: North\n"
 					+ "2: East\n"
@@ -171,7 +146,7 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 					+ "South is a wall");
 			System.out.println("Choose an option: ");
 			choice = scan.nextInt();
-		}else if(currentRoom[0] == 0 && currentRoom[1] == 7) {
+		}else if(currentRoom[1] == 0 && currentRoom[0] == dungeonSize-1) {
 			System.out.println("Move: \n"
 					+ "North is a wall\n"
 					+ "East is a wall\n"
@@ -181,29 +156,13 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 			choice = scan.nextInt();
 		}else if(currentRoom[1] == 0) {
 			System.out.println("Move: \n"
-					+ "1: North\n"
-					+ "2: East\n"
-					+ "West is a wall\n"
-					+ "4: South");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[0] == 7) {
-			System.out.println("Move: \n"
-					+ "1: North\n"
-					+ "2: East\n"
-					+ "3: West\n"
-					+ "South is a Wall");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[0] == 0) {
-			System.out.println("Move: \n"
 					+ "North is a wall\n"
 					+ "2: East\n"
 					+ "3: West\n"
 					+ "4: South");
 			System.out.println("Choose an option: ");
 			choice = scan.nextInt();
-		}else if(currentRoom[1] == 7) {
+		}else if(currentRoom[0] == dungeonSize-1) {
 			System.out.println("Move: \n"
 					+ "1: North\n"
 					+ "East is a wall\n"
@@ -211,7 +170,23 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 					+ "4: South");
 			System.out.println("Choose an option: ");
 			choice = scan.nextInt();
-		}else if(currentRoom[0] != 0 && currentRoom[0] != 7 && currentRoom[1] != 0 && currentRoom[1] != 7){
+		}else if(currentRoom[0] == 0) {
+			System.out.println("Move: \n"
+					+ "1. North\n"
+					+ "2: East\n"
+					+ "West is a wall\n"
+					+ "4: South");
+			System.out.println("Choose an option: ");
+			choice = scan.nextInt();
+		}else if(currentRoom[1] == dungeonSize-1) {
+			System.out.println("Move: \n"
+					+ "1: North\n"
+					+ "2: East\n"
+					+ "3: West\n"
+					+ "South is a wall");
+			System.out.println("Choose an option: ");
+			choice = scan.nextInt();
+		}else if(currentRoom[0] != 0 && currentRoom[0] != dungeonSize-1 && currentRoom[1] != 0 && currentRoom[1] != dungeonSize-1){
 			System.out.println("Move: \n"
 					+ "1: North\n"
 					+ "2: East\n"
@@ -226,20 +201,40 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 		switch(choice) {
 		
 			case 1:
-				GameStateManager.setCurrentRoom(currentRoom[0] - 1, currentRoom[1]);
+				if((currentRoom[1]-1) < 0) {
+					System.out.println("Illegal input, try again");
+					choice = -1;
+				}else {
+				GameStateManager.setCurrentRoom(currentRoom[0], currentRoom[1]-1);
+				}
 				break;
 			case 2:
-				GameStateManager.setCurrentRoom(currentRoom[0], currentRoom[1] + 1);
+				if((currentRoom[0] + 1) > (dungeonSize-1)) {
+					System.out.println("Illegal input, try again");
+					choice = -1;
+				}else {
+				GameStateManager.setCurrentRoom(currentRoom[0] + 1, currentRoom[1]);
+				}
 				break;
 			case 3:
-				GameStateManager.setCurrentRoom(currentRoom[0], currentRoom[1] - 1);
+				if((currentRoom[0]-1) < 0) {
+					System.out.println("Illegal input, try again");
+					choice = -1;
+				}else {
+				GameStateManager.setCurrentRoom(currentRoom[0] - 1, currentRoom[1]);
+				}
 				break;
 			case 4:
-				GameStateManager.setCurrentRoom(currentRoom[0] + 1, currentRoom[1]);
+				if((currentRoom[1] + 1) > (dungeonSize-1)) {
+					System.out.println("Illegal input, try again");
+					choice = -1;
+				}else {
+				GameStateManager.setCurrentRoom(currentRoom[0], currentRoom[1] + 1);
+				}
 				break;
 			default:
-				System.out.println("Something broke");
-		}	
+				choice = -1;
+		}}while(choice < 0);	
 			
 	}
 

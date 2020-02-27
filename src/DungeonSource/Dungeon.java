@@ -4,26 +4,35 @@ package DungeonSource;
 public class Dungeon
 {
 	
-    public Room[][] generateDungeon(){
-    	Room[][] dungeon = new Room[8][8];
+	//Unimplemented
+	//private Room entrance;
+	//private Room exit;
+	
+    public static Room[][] generateDungeon(int dungeonSize){
+    	Room[][] dungeon = new Room[dungeonSize][dungeonSize];
     	for(int i = 0; i < dungeon.length; i++) {
     		
     		for(int j = 0; j < dungeon[0].length; j++) {
     			dungeon[i][j] = generateRoom();
     		}
     	}
+    	dungeon[0][0] = new specialItemRoom();
+    	dungeon[0][dungeonSize-1] = new specialItemRoom();
+    	dungeon[dungeonSize-1][0] = new specialItemRoom();
+    	dungeon[dungeonSize-1][dungeonSize-1] = new specialItemRoom();
+    	
     	return dungeon;
     }
     
-    public Room generateRoom() {
+    public static Room generateRoom() {
     	
-    	int random = (int)(Math.random()*6) + 1;
+    	int random = (int)(Math.random()*7) + 1;
     	
-    	if(random == 1 || random == 2) {
+    	if(random <= 4) {
     		return new EncounterRoom();
-    	}else if(random == 3) {
+    	}else if(random == 5) {
     		return new TrapRoom();
-    	}else if(random == 4) {
+    	}else if(random == 6) {
     		return new ItemRoom();
     	}else {
     		return new EmptyRoom();

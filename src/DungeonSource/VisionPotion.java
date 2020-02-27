@@ -9,6 +9,6 @@ public class VisionPotion extends Items{
 	}
 	
 	public void useItem(Hero theHero, DungeonCharacter theMonster) {
-		System.out.println("I used a vision potion");
+		GameStateManager.visionPotionReveal();
 	}
 }

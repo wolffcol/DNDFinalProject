@@ -1,8 +1,9 @@
 package DungeonSource;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class ItemBag {
+public class ItemBag{
 	
 	ArrayList<Items> itemBag = new ArrayList<Items>();
 	
@@ -11,6 +12,7 @@ public class ItemBag {
 	}
 	
 	public void printItemList() {
+		Collections.sort(itemBag);
 		for(Items i : itemBag) {
 			System.out.println((itemBag.indexOf(i) + 1) + ": " + i.getName());
 		}
