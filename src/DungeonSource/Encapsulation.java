@@ -6,7 +6,7 @@ public class Encapsulation extends Items {
 
 	@Override
 	public void useItem(Hero theHero, DungeonCharacter opponent) {
-		System.out.println( theHero.getName() + " generates a shield." + opponent.getName() + " cannot reach through the protection.");	
+		System.out.println( theHero.getName() + " generates an unpenetrable shield of protection.");	
 	}
 
 	@Override

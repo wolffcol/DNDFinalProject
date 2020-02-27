@@ -23,9 +23,7 @@ public class TrapRoom extends Room{
 				break;
 			case 3:
 				System.out.println("You trip and drop your items into a black hole. Lose all your items.");
-				for(Items i: theHero.getItemBag().getItemArrayList()) {
-					theHero.itemBag.removeItem(i);
-				}
+				theHero.getItemBag().getItemArrayList().clear();
 				break;
 			default:
 				System.out.println("Fall into a spike trap!. Lose 20 Health.");

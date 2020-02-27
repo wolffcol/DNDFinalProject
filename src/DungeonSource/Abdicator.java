@@ -1,12 +1,10 @@
 package DungeonSource;
 
-
-public class Ogre extends Monster
-{
-
-    public Ogre()
+public class Abdicator extends Monster {
+	
+	public Abdicator()
 	{
-		super("Oscar the Ogre", 200, 2, .6, .1, 30, 50, 30, 50);
+		super("Abdicator: The Abandoned One", 200, 2, .6, .1, 30, 50, 30, 50);
 
 
     }//end constructor

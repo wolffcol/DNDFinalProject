@@ -16,7 +16,7 @@ public class Fighter extends Hero {
 	public void actionSurge()
 	{
 		skillCooldown = true;
-		numTurns = numTurns * 2;
+		setTurns(getTurns());
 		System.out.println(name + " has gained twice as many turns");
 
 	}//end
@@ -38,7 +38,7 @@ public class Fighter extends Hero {
 		    if(!skillCooldown) {
 		    System.out.println("2. Use Action Surge");
 		    }
-		    if(super.itemBag.itemBag.isEmpty()) {
+		    if(super.getItemBag().itemBag.isEmpty()) {
 		    	
 		    }else {
 		    	System.out.println("3. Use an Item");
@@ -48,7 +48,7 @@ public class Fighter extends Hero {
 		    switch (scan.nextInt())
 		    {
 			    case 1: attack(opponent);
-			    	numTurns--;
+			    	setTurns(-1);
 			        break;
 			    case 2: actionSurge();
 			        break;
@@ -58,10 +58,10 @@ public class Fighter extends Hero {
 			        System.out.println("Choose Again \n=================\n");
 		    }//end switch
 		    
-			if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
+			if (getTurns() > 0)
+			    System.out.println("Number of turns remaining is: " + getTurns());
 
-		} while(numTurns > 0  && hitPoints > 0 && opponent.getHitPoints() > 0);
+		} while(getTurns() > 0  && hitPoints > 0 && opponent.getHitPoints() > 0);
 		skillCooldown = false;
     }//end battleChoices method
 

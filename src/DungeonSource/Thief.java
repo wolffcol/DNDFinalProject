@@ -20,7 +20,7 @@ public class Thief extends Hero
 		{
 			System.out.println("Surprise attack was successful!\n" +
 								name + " gets an additional turn.");
-			numTurns++;
+			setTurns(1);
 			attack(opponent);
 		}//end surprise
 		else if (surprise >= .9)
@@ -43,7 +43,7 @@ public class Thief extends Hero
 		{
 		    System.out.println("1. Attack Opponent");
 		    System.out.println("2. Surprise Attack");
-		    if(super.itemBag.itemBag.isEmpty()) {
+		    if(super.getItemBag().itemBag.isEmpty()) {
 		    	
 		    }else {
 		    	System.out.println("3. Use an Item");
@@ -53,10 +53,10 @@ public class Thief extends Hero
 		    switch (scan.nextInt())
 		    {
 			    case 1: attack(opponent);
-			    	numTurns--;
+			    	setTurns(-1);
 			        break;
 			    case 2: surpriseAttack(opponent);
-			    	numTurns--;
+			    	setTurns(-1);
 			        break;
 			    case 3: useItem(this, opponent);
 			    	System.out.println("Using an item is a free action!\n");
@@ -64,10 +64,10 @@ public class Thief extends Hero
 			        System.out.println("Choose Again \n=================\n");
 		    }//end switch
 		    
-			if (numTurns > 0)
-			    System.out.println("Number of turns remaining is: " + numTurns);
+			if (getTurns() > 0)
+			    System.out.println("Number of turns remaining is: " + getTurns());
 
-		} while(numTurns > 0  && hitPoints > 0 && opponent.getHitPoints() > 0);
+		} while(getTurns() > 0  && hitPoints > 0 && opponent.getHitPoints() > 0);
 
     }
 }

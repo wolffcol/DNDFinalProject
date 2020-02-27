@@ -6,9 +6,9 @@ public class Polymorphism extends Items {
 
 	@Override
 	public void useItem(Hero theHero, DungeonCharacter opponent) {
-		ItemBag tempBag = theHero.itemBag;
+		ItemBag tempBag = theHero.getItemBag();
 		theHero = HeroFactory.createHero(GameStateManager.getScanner());
-		theHero.itemBag = tempBag;
+		theHero.setItemBag(tempBag);
 	}
 
 	@Override

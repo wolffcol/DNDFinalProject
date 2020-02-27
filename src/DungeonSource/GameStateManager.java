@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class GameStateManager {
 	
 	private static Room[][] gameDungeon;
-	private static int[] currentRoom = new int[2];
+	private static int[] currentRoom;
 	private static Hero theHero;
 	private static Scanner scan;
 
@@ -15,7 +15,7 @@ public class GameStateManager {
 		gameDungeon = state.dungeon;
 		scan = state.scan;
 		currentRoom = state.currRoom;
-		//toString(gameDungeon);
+		
 		startGame();
 	}
 	
@@ -36,7 +36,12 @@ public class GameStateManager {
 		currentRoom[1] = y;
 		System.out.println("I am currently in Room: " + x + " , " + y);
 		if(!gameDungeon[x][y].characterHasBeenHere) {
+			
+			if(gameDungeon[x][y].getClass().toString().contains("exitRoom")) {
+				
+			}else {
 			gameDungeon[x][y].characterHasBeenHere = true;
+			}
 			gameDungeon[x][y].triggerRoom(theHero);
 		}else {
 			System.out.println("This room feels familiar");
@@ -48,20 +53,19 @@ public class GameStateManager {
 	}
 
 	public static void winGame() {
-		System.out.println("You have conquered the four pillars of OO and have become a code dungeon wizard.");
-		
+		System.out.println("You have conquered the four pillars of OO and have become a code dungeon wizard.");	
 	}
 	
 	public static void visionPotionReveal() {
 		
-		System.out.println("North Room: " + gameDungeon[currentRoom[0]][currentRoom[1]-1].getClass().toString().substring(20));
-		System.out.println("Northeast Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]-1].getClass().toString().substring(20));
-		System.out.println("East Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]].getClass().toString().substring(20));
-		System.out.println("Southeast Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]+1].getClass().toString().substring(20));
-		System.out.println("South Room: " + gameDungeon[currentRoom[0]][currentRoom[1]+1].getClass().toString().substring(20));
-		System.out.println("Southwest Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]+1].getClass().toString().substring(20));
-		System.out.println("West Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]].getClass().toString().substring(20));
-		System.out.println("Northwest Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]-1].getClass().toString().substring(20));
+		System.out.println("North Room: " + gameDungeon[currentRoom[0]][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());
+		System.out.println("Northeast Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());
+		System.out.println("East Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());
+		System.out.println("Southeast Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());
+		System.out.println("South Room: " + gameDungeon[currentRoom[0]][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());
+		System.out.println("Southwest Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());
+		System.out.println("West Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());
+		System.out.println("Northwest Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());
 	}
 	
 	/*public static void toString(Room[][] dungeon) {

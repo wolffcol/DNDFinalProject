@@ -28,11 +28,11 @@ public class Dungeon
     	
     	int random = (int)(Math.random()*7) + 1;
     	
-    	if(random <= 4) {
+    	if(random <= 3) {
     		return new EncounterRoom();
-    	}else if(random == 5) {
+    	}else if(random == 4) {
     		return new TrapRoom();
-    	}else if(random == 6) {
+    	}else if(random == 5 || random == 6) {
     		return new ItemRoom();
     	}else {
     		return new EmptyRoom();

@@ -9,7 +9,7 @@ public class InvisibilityPotion extends Items {
 	}
 	
 	public void useItem(Hero theHero, DungeonCharacter theMonster) {
-		theHero.chanceToBlock = 1.0;
+		theHero.setBlock(1);
 		System.out.println("\nYou now have 100% chance to block for 1 turn!");	
 	}
 	

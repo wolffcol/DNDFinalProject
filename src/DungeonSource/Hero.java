@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public abstract class Hero extends DungeonCharacter
 {
-	protected double chanceToBlock;
-	protected double trueBlock;
-	protected int numTurns;
-	protected ItemBag itemBag = new ItemBag();
+	private double chanceToBlock;
+	private double trueBlock;
+	private int numTurns;
+	private ItemBag itemBag = new ItemBag();
 	protected boolean hadEncapsulation, hadAbstraction, hadPolymorphism, hadInheritance = false;
 
 //-----------------------------------------------------------------
@@ -27,9 +27,9 @@ public abstract class Hero extends DungeonCharacter
   private void createBag() {
   	
   	if(this.getClass().toString().contains("Warrior")) {
-  		itemBag.addItem(new AttackPotion());
   		itemBag.addItem(new VisionPotion());
-  		itemBag.addItem(new InvisibilityPotion());
+  		itemBag.addItem(new VisionPotion());
+  		itemBag.addItem(new VisionPotion());
   		itemBag.addItem(new HealingPotion());
   		itemBag.addItem(new Polymorphism());
   	}else if(this.getClass().toString().contains("Sorceress")) {
@@ -40,6 +40,18 @@ public abstract class Hero extends DungeonCharacter
   	
   }
 
+  public int getTurns() {
+	  return numTurns;
+  }
+  
+  public void setTurns(int add) {
+	  numTurns += add;
+  }
+  
+  public void setBlock(double block) {
+	  this.chanceToBlock = block;
+  }
+  
   public void readName()
   {
 		System.out.print("Enter character name: ");
@@ -76,10 +88,14 @@ public void subtractHitPoints(int hitPoints)
 public void useItem(Hero theHero, DungeonCharacter opponent) {
 	
 	itemBag.printItemList();
+	int choice = -1;
 	
-	System.out.println("Which item would you like to use: ");
 	
-	int choice = Keyboard.readInt();
+	do {
+		System.out.println("Which item would you like to use: ");
+		choice = Keyboard.readInt();
+	
+	}while(choice > itemBag.getItemArrayList().size() || choice < 1);
 	itemBag.getItemArrayList().get(choice-1).useItem(theHero, opponent);
 	
 	itemBag.getItemArrayList().remove(choice-1);
@@ -102,7 +118,7 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 		    choice = scan.nextInt();
 		    switch (choice)
 		    {
-			    case 1: movement(scan);
+			    case 1: MovementController.movement(scan);
 			        break;
 			    case 2: useItem(this, null);
 			        break;
@@ -112,132 +128,6 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 
 		} while(choice != 1 || choice != 2);
 	}
-	
-	public void movement(Scanner scan) {
-		
-		int choice;
-		int dungeonSize = InitializeGame.getDungeonSize();
-		
-		int[] currentRoom = GameStateManager.getCurrentRoom();
-		
-		
-		do {
-		if(currentRoom[0] == dungeonSize-1 && currentRoom[1] == dungeonSize-1) {
-			System.out.println("Move: \n"
-					+ "1: North\n"
-					+ "East is a Wall\n"
-					+ "3: West\n"
-					+ "South is a Wall");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[0] == 0 && currentRoom[1] == 0) {
-			System.out.println("Move: \n"
-					+ "North is a wall\n"
-					+ "2: East\n"
-					+ "West is a wall\n"
-					+ "4: South");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[1] == (dungeonSize-1) && currentRoom[0] == 0) {
-			System.out.println("Move: \n"
-					+ "1: North\n"
-					+ "2: East\n"
-					+ "West is a wall\n"
-					+ "South is a wall");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[1] == 0 && currentRoom[0] == dungeonSize-1) {
-			System.out.println("Move: \n"
-					+ "North is a wall\n"
-					+ "East is a wall\n"
-					+ "3: West\n"
-					+ "4: South");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[1] == 0) {
-			System.out.println("Move: \n"
-					+ "North is a wall\n"
-					+ "2: East\n"
-					+ "3: West\n"
-					+ "4: South");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[0] == dungeonSize-1) {
-			System.out.println("Move: \n"
-					+ "1: North\n"
-					+ "East is a wall\n"
-					+ "3: West\n"
-					+ "4: South");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[0] == 0) {
-			System.out.println("Move: \n"
-					+ "1. North\n"
-					+ "2: East\n"
-					+ "West is a wall\n"
-					+ "4: South");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[1] == dungeonSize-1) {
-			System.out.println("Move: \n"
-					+ "1: North\n"
-					+ "2: East\n"
-					+ "3: West\n"
-					+ "South is a wall");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else if(currentRoom[0] != 0 && currentRoom[0] != dungeonSize-1 && currentRoom[1] != 0 && currentRoom[1] != dungeonSize-1){
-			System.out.println("Move: \n"
-					+ "1: North\n"
-					+ "2: East\n"
-					+ "3: West\n"
-					+ "4: South");
-			System.out.println("Choose an option: ");
-			choice = scan.nextInt();
-		}else {	
-			choice = 0;
-		}
-		
-		switch(choice) {
-		
-			case 1:
-				if((currentRoom[1]-1) < 0) {
-					System.out.println("Illegal input, try again");
-					choice = -1;
-				}else {
-				GameStateManager.setCurrentRoom(currentRoom[0], currentRoom[1]-1);
-				}
-				break;
-			case 2:
-				if((currentRoom[0] + 1) > (dungeonSize-1)) {
-					System.out.println("Illegal input, try again");
-					choice = -1;
-				}else {
-				GameStateManager.setCurrentRoom(currentRoom[0] + 1, currentRoom[1]);
-				}
-				break;
-			case 3:
-				if((currentRoom[0]-1) < 0) {
-					System.out.println("Illegal input, try again");
-					choice = -1;
-				}else {
-				GameStateManager.setCurrentRoom(currentRoom[0] - 1, currentRoom[1]);
-				}
-				break;
-			case 4:
-				if((currentRoom[1] + 1) > (dungeonSize-1)) {
-					System.out.println("Illegal input, try again");
-					choice = -1;
-				}else {
-				GameStateManager.setCurrentRoom(currentRoom[0], currentRoom[1] + 1);
-				}
-				break;
-			default:
-				choice = -1;
-		}}while(choice < 0);	
-			
-	}
-
 
 	public void battleChoices(DungeonCharacter opponent, Scanner scan)
 	{
@@ -253,6 +143,12 @@ public void useItem(Hero theHero, DungeonCharacter opponent) {
 
 	public void clearPotionEffects() {
 		this.chanceToBlock = trueBlock;	
+	}
+
+
+	public void setItemBag(ItemBag tempBag) {
+		this.itemBag = tempBag;
+		
 	}
 
 }//end Hero class

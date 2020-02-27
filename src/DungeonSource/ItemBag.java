@@ -23,8 +23,7 @@ public class ItemBag{
 			itemBag.remove(item);
 		}else {
 			System.out.println("Your item bag did not contain that item");
-		}
-		
+		}	
 	}
 	
 	public void addItem(Items item) {

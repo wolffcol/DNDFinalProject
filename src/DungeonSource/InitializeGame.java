@@ -12,14 +12,20 @@ public class InitializeGame {
 		
 		gameDungeon = Dungeon.generateDungeon(dungeonDimension);
 		
-		int[] startRoom = new int[] {determineStartingRoom(),determineStartingRoom()};
+		int[] startRoom = new int[] {determineRoom(),determineRoom()};
 		gameDungeon[startRoom[0]][startRoom[1]] = new entranceRoom();
 		gameDungeon[startRoom[0]][startRoom[1]].characterHasBeenHere = true;
+		int[] exitRoom = new int[] {determineRoom(),determineRoom()};
+		
+		while(exitRoom[0] == startRoom [0] && exitRoom[1] == startRoom [1]) {
+			exitRoom = new int[] {determineRoom(),determineRoom()};
+		}
+		gameDungeon[exitRoom[0]][exitRoom[1]] = new exitRoom();
 		
 		return new statesHolder(HeroFactory.createHero(scan), gameDungeon, scan, startRoom);	
 	}
 	
-	public static int determineStartingRoom() {
+	public static int determineRoom() {
 		int x = (int)(((Math.random() * (dungeonDimension/2)+1)-(dungeonDimension/4) + 1) + (dungeonDimension/4));
 		
 		return x;
