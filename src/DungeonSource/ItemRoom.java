@@ -24,7 +24,7 @@ public class ItemRoom extends Room{
 			theHero.getItemBag().addItem(new HealingPotion());
 		}else {
 			System.out.println("Chest explodes");
-			theHero.subtractHitPoints(40);
+			theHero.adjustHitPoints(40);
 		}
 	}
 

@@ -32,7 +32,7 @@ public class Sorceress extends Hero
 	    int hPoints;
 
 		hPoints = (int)(Math.random() * (MAX_ADD - MIN_ADD + 1)) + MIN_ADD;
-		subtractHitPoints(-hPoints);
+		adjustHitPoints(-hPoints);
 		System.out.println(name + " added [" + hPoints + "] points.\n"
 							+ "Total hit points remaining are: "
 							+ hitPoints);

@@ -68,10 +68,10 @@ public abstract class Hero extends DungeonCharacter
 
   }//end defend method
 
-public void subtractHitPoints(int hitPoints)
+public void adjustHitPoints(int hitPoints)
 	{
 		if (hitPoints < 0){
-			super.subtractHitPoints(hitPoints);
+			super.adjustHitPoints(hitPoints);
 		}
 		else if(defend())
 		{
@@ -79,7 +79,7 @@ public void subtractHitPoints(int hitPoints)
 		}
 		else
 		{
-			super.subtractHitPoints(hitPoints);
+			super.adjustHitPoints(hitPoints);
 		}
 
 

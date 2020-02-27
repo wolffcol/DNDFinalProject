@@ -15,11 +15,11 @@ public class TrapRoom extends Room{
 		switch(type) {
 			case 1:
 				System.out.println("Fall into a spike trap! Lose 20 Health.");
-				theHero.subtractHitPoints(20);
+				theHero.adjustHitPoints(20);
 				break;
 			case 2:
 				System.out.println("Character falls into a healing fountain. Recover 20 Health.");
-				theHero.subtractHitPoints(-20);
+				theHero.adjustHitPoints(-20);
 				break;
 			case 3:
 				System.out.println("You trip and drop your items into a black hole. Lose all your items.");
@@ -27,7 +27,7 @@ public class TrapRoom extends Room{
 				break;
 			default:
 				System.out.println("Fall into a spike trap!. Lose 20 Health.");
-				theHero.subtractHitPoints(20);
+				theHero.adjustHitPoints(20);
 		}
 	}
 

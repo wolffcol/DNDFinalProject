@@ -87,7 +87,7 @@ Returns: nothing
 This method calls: nothing
 This method is called by: overridden versions in Hero and Monster
 ---------------------------------------------------------*/
-	public void subtractHitPoints(int hitPoints)
+	public void adjustHitPoints(int hitPoints)
 	{
 		if (hitPoints <0) {
 			this.hitPoints -= hitPoints;
@@ -147,7 +147,7 @@ hero classes and externally
 		{
 			damage = (int)(Math.random() * (damageMax - damageMin + 1))
 						+ damageMin ;
-			opponent.subtractHitPoints(damage);
+			opponent.adjustHitPoints(damage);
 
 
 

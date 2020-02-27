@@ -58,24 +58,21 @@ public class GameStateManager {
 	
 	public static void visionPotionReveal() {
 		
-		System.out.println("North Room: " + gameDungeon[currentRoom[0]][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());
-		System.out.println("Northeast Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());
-		System.out.println("East Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());
-		System.out.println("Southeast Room: " + gameDungeon[currentRoom[0]+1][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());
-		System.out.println("South Room: " + gameDungeon[currentRoom[0]][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());
-		System.out.println("Southwest Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());
-		System.out.println("West Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());
-		System.out.println("Northwest Room: " + gameDungeon[currentRoom[0]-1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());
+		try{System.out.println("North Room: " + 
+				gameDungeon[currentRoom[0]][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
+		try{System.out.println("Northeast Room: " + 
+				gameDungeon[currentRoom[0]+1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
+		try{System.out.println("East Room: " + 
+				gameDungeon[currentRoom[0]+1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
+		try{System.out.println("Southeast Room: " + 
+				gameDungeon[currentRoom[0]+1][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
+		try{System.out.println("South Room: " + 
+				gameDungeon[currentRoom[0]][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
+		try{System.out.println("Southwest Room: " + 
+				gameDungeon[currentRoom[0]-1][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
+		try{System.out.println("West Room: " + 
+				gameDungeon[currentRoom[0]-1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
+		try{System.out.println("Northwest Room: " + 
+				gameDungeon[currentRoom[0]-1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
 	}
-	
-	/*public static void toString(Room[][] dungeon) {
-		
-		for(int i = 0; i < dungeon.length;i++) {
-			System.out.println();
-			
-			for(int j = 0; j < dungeon[0].length; j++) {
-				System.out.print("***\r" + "* |\r" + "*-*");
-			}
-		}
-	}*/
 }

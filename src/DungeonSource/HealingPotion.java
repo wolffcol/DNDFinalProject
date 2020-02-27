@@ -6,7 +6,7 @@ public class HealingPotion extends Items{
 
 	@Override
 	public void useItem(Hero theHero, DungeonCharacter opponent) {
-		theHero.subtractHitPoints(-20);	
+		theHero.adjustHitPoints(-20);	
 	}
 
 	@Override
