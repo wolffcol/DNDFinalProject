@@ -8,7 +8,7 @@ public class EncounterRoom extends Room{
 	}
 	
 	public void generateEncounter(Hero theHero) {
-		Battle.BattleInstance(theHero, MonsterFactory.createMonster((int)(Math.random() * 3) + 1), InitializeGame.getScanner());
+		Battle.BattleInstance(theHero, MonsterFactory.createMonster((int)(Math.random() * 3) + 1), GameStateManager.getScanner());
 		
 	}
 

@@ -8,11 +8,11 @@ public class DungeonAdventure {
 	{
 		do
 		{
-			InitializeGame.BuildGame();
-		} while (playAgain(InitializeGame.getScanner()));
+			GameStateManager.stateSetup();
+		} while (playAgain(GameStateManager.getScanner()));
 		
 		//Added for correctness even though the program terminates just after this
-		InitializeGame.getScanner().close();
+		GameStateManager.getScanner().close();
 
     }//end main method
 
