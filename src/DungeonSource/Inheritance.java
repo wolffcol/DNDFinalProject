@@ -6,7 +6,7 @@ public class Inheritance extends Items{
 
 	@Override
 	public void useItem(Hero theHero, DungeonCharacter opponent) {
-		theHero.getItemBag().addItem(new PotionOfWealth());	
+		theHero.getItemBag().addItem(new PotionOfWealth(), theHero.getItemBag().combatBag);	
 	}
 
 	@Override

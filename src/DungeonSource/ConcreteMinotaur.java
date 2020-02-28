@@ -4,18 +4,14 @@ public class ConcreteMinotaur extends Monster {
 
 	public ConcreteMinotaur()
 	{
-		super("Concrete Minotaur: Purloiner of Generality", 200, 2, .6, .1, 30, 50, 30, 50);
+		super("Concrete Minotaur: Purloiner of Generality", 400, 2, .4, 0, 60, 75, 30, 50);
 
-
-    }//end constructor
+    }
 
 	public void attack(DungeonCharacter opponent)
 	{
-		System.out.println(name + " slowly swings a club toward's " +
-							opponent.getName() + ":");
+		System.out.println(getName() + " chucks a concrete block in " + opponent.getName() + "'s direction: ");
 		super.attack(opponent);
 
-	}//end override of attack
-
-
-}//end Monster class
+	}
+}

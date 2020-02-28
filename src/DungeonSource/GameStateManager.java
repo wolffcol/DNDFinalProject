@@ -17,6 +17,7 @@ public class GameStateManager {
 		currentRoom = state.currRoom;
 		
 		startGame();
+		
 	}
 	
 	public static void startGame() {
@@ -29,6 +30,14 @@ public class GameStateManager {
 	
 	public static Hero getHero() {
 		return theHero;
+	}
+	
+	public static void pauseTime(int sleepTime) {
+		try {
+			Thread.sleep(sleepTime*1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void setCurrentRoom(int x, int y) {
@@ -58,21 +67,21 @@ public class GameStateManager {
 	
 	public static void visionPotionReveal() {
 		
-		try{System.out.println("North Room: " + 
+		try{System.out.println("North: " + 
 				gameDungeon[currentRoom[0]][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
-		try{System.out.println("Northeast Room: " + 
+		try{System.out.println("Northeast: " + 
 				gameDungeon[currentRoom[0]+1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
-		try{System.out.println("East Room: " + 
+		try{System.out.println("East: " + 
 				gameDungeon[currentRoom[0]+1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
-		try{System.out.println("Southeast Room: " + 
+		try{System.out.println("Southeast: " + 
 				gameDungeon[currentRoom[0]+1][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
-		try{System.out.println("South Room: " + 
+		try{System.out.println("South: " + 
 				gameDungeon[currentRoom[0]][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
-		try{System.out.println("Southwest Room: " + 
+		try{System.out.println("Southwest: " + 
 				gameDungeon[currentRoom[0]-1][currentRoom[1]+1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
-		try{System.out.println("West Room: " + 
+		try{System.out.println("West: " + 
 				gameDungeon[currentRoom[0]-1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
-		try{System.out.println("Northwest Room: " + 
+		try{System.out.println("Northwest: " + 
 				gameDungeon[currentRoom[0]-1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
 	}
 }

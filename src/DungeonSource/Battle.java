@@ -19,10 +19,12 @@ public class Battle {
 	    //hero goes first
 		theHero.battleChoices(theMonster, scan);
 
+		GameStateManager.pauseTime(1);
 		//monster's turn (provided it's still alive!)
 		if (theMonster.isAlive())
 		    theMonster.attack(theHero);
 
+		GameStateManager.pauseTime(1);
 		//let the player bail out if desired
 		System.out.print("\n-->q to quit, anything else to continue: ");
 		pause = scan.next().toCharArray();
@@ -33,6 +35,7 @@ public class Battle {
 	    System.out.println(theHero.getName() + " was victorious!");
 	else if (!theHero.isAlive())
 		System.out.println(theHero.getName() + " was defeated :-(");
+		
 	else//both are alive so user quit the game
 		System.out.println("Quitters never win ;-)");
 	}

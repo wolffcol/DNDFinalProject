@@ -5,20 +5,26 @@ import java.util.Collections;
 
 public class ItemBag{
 	
-	ArrayList<Items> itemBag = new ArrayList<Items>();
+	ArrayList<Items> combatBag = new ArrayList<Items>();
+	ArrayList<Items> nonCombatBag = new ArrayList<Items>();
 	
-	public ArrayList<Items> getItemArrayList(){
-		return itemBag;
+	public ArrayList<Items> getCombatArrayList(){
+		return combatBag;
 	}
 	
-	public void printItemList() {
+	public ArrayList<Items> getNonCombatArrayList(){
+		return nonCombatBag;
+	}
+	
+	public void printItemList(ArrayList<Items> itemBag) {
 		Collections.sort(itemBag);
 		for(Items i : itemBag) {
-			System.out.println((itemBag.indexOf(i) + 1) + ": " + i.getName());
+			System.out.println((itemBag.indexOf(i) + 1) + ". " + i.getName());
 		}
+		System.out.println(itemBag.size()+1 + ". To Go Back");
 	}
 	
-	public void removeItem(Items item) {
+	public void removeItem(Items item, ArrayList<Items> itemBag) {
 		if(itemBag.contains(item)) {
 			itemBag.remove(item);
 		}else {
@@ -26,7 +32,7 @@ public class ItemBag{
 		}	
 	}
 	
-	public void addItem(Items item) {
+	public void addItem(Items item, ArrayList<Items> itemBag) {
 		if(item != null) {
 			itemBag.add(item);
 		}

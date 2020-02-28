@@ -1,47 +1,14 @@
 package DungeonSource;
 
-/**
- * Title: DungeonCharacter.java
- *
- * Description: Abstract Base class for inheritance hierarchy for a
- *              role playing game
- *
- *  class variables (all will be directly accessible from derived classes):
- *    name (name of character)
- *    hitPoints (points of damage a character can take before killed)
- *    attackSpeed (how fast the character can attack)
- *    chanceToHit (chance an attack will strike the opponent)
- *    damageMin, damageMax (range of damage the character can inflict on
- *     opponent)
- *
- *  class methods (all are directly accessible by derived classes):
- *    DungeonCharacter(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, int damageMin, int damageMax)
-	  public String getName()
-	  public int getHitPoints()
-	  public int getAttackSpeed()
-	  public void addHitPoints(int hitPoints)
-	  public void subtractHitPoints(int hitPoints) -- this method will be
-	    overridden
-	  public boolean isAlive()
-	  public void attack(DungeonCharacter opponent) -- this method will be
-	    overridden
- *
- * Copyright:    Copyright (c) 2001
- * Company:
- * @author
- * @version 1.0
- */
-
 //Removed comparable implementation, it is not utilized anywhere other than to have the compareTo method
 public abstract class DungeonCharacter
 {
 
-	protected String name;
-	protected int hitPoints;
-	protected int attackSpeed;
-	protected double chanceToHit;
-	protected int damageMin, damageMax;
+	private String name;
+	private int hitPoints;
+	private int attackSpeed;
+	private double chanceToHit;
+	private int damageMin, damageMax;
 
 //-----------------------------------------------------------------
 //explicit constructor to initialize instance variables -- it is called
@@ -75,18 +42,19 @@ public abstract class DungeonCharacter
 	{
 		return attackSpeed;
 	}//end getAttackSpeed
-
-/*-------------------------------------------------------
-subtractHitPoints is used to decrement the hitpoints a dungeon character has.
-It also reports the damage and remaining hit points (these things could be
-done in separate methods to make code more modular ;-)
-
-Receives: number of hit points to subtract
-Returns: nothing
-
-This method calls: nothing
-This method is called by: overridden versions in Hero and Monster
----------------------------------------------------------*/
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setHitPoints(int hp) {
+		this.hitPoints = hp;
+	}
+	
+	public void setAttackSpeed(int attackSpeed) {
+		this.attackSpeed = attackSpeed;
+	}
+	
 	public void adjustHitPoints(int hitPoints)
 	{
 		if (hitPoints <0) {

@@ -6,31 +6,22 @@ public class WildMage extends Hero {
 
 	public WildMage()
 	{
-		super("Wild Mage", 125, 4, .8, 35, 60, .2);
+		super("Wild Mage", 75, 4, .8, 30, 60, .05);
 
     }//end constructor
 
-
-	public void crushingBlow(DungeonCharacter opponent)
+	public void wildMagic(DungeonCharacter opponent)
 	{
-		if (Math.random() <= .4)
-		{
-			int blowPoints = (int)(Math.random() * 76) + 100;
-			System.out.println(name + " lands a CRUSHING BLOW for " + blowPoints
-								+ " damage!");
-			opponent.adjustHitPoints(blowPoints);
-		}//end blow succeeded
-		else
-		{
-			System.out.println(name + " failed to land a crushing blow");
-			System.out.println();
-		}//blow failed
+		int blowPoints = (int)(Math.random() * 76) + 100;
+		System.out.println(getName() + " shoots random magic for " + blowPoints
+									 + " damage!");
+		opponent.adjustHitPoints(blowPoints);
 
 	}//end crushingBlow method
 
 	public void attack(DungeonCharacter opponent)
 	{
-		System.out.println(name + " swings a mighty sword at " +
+		System.out.println(getName() + " swings a staff at " +
 							opponent.getName() + ":");
 		super.attack(opponent);
 	}//end override of attack method
@@ -42,8 +33,8 @@ public class WildMage extends Hero {
 		do
 		{
 		    System.out.println("1. Attack Opponent");
-		    System.out.println("2. Crushing Blow on Opponent");
-		    if(super.getItemBag().itemBag.isEmpty()) {
+		    System.out.println("2. Wild Magic");
+		    if(super.getItemBag().combatBag.isEmpty()) {
 		    	
 		    }else {
 		    	System.out.println("3. Use an Item");
@@ -55,10 +46,10 @@ public class WildMage extends Hero {
 			    case 1: attack(opponent);
 			    	setTurns(-1);
 			        break;
-			    case 2: crushingBlow(opponent);
+			    case 2: wildMagic(opponent);
 			    	setTurns(-1);
 			        break;
-			    case 3: useItem(this, opponent);
+			    case 3: useCombatItem(this, opponent);
 			    	System.out.println("Using an item is a free action!\n");
 			    default:
 			        System.out.println("Choose Again \n=================\n");
@@ -67,7 +58,7 @@ public class WildMage extends Hero {
 			if (getTurns() > 0)
 			    System.out.println("Number of turns remaining is: " + getTurns());
 
-		} while(getTurns() > 0  && hitPoints > 0 && opponent.getHitPoints() > 0);
+		} while(getTurns() > 0  && getHitPoints() > 0 && opponent.getHitPoints() > 0);
 
     }//end battleChoices method
 

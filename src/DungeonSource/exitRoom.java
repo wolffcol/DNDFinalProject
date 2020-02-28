@@ -8,8 +8,7 @@ public class exitRoom extends Room{
 			GameStateManager.winGame();
 		}else {
 			System.out.println("You must collect the four artifacts of OO before exiting the dungeon.");
-		}
-		
+		}	
 	}
 
 }

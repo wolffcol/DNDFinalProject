@@ -7,6 +7,7 @@ public class PotionOfWealth extends Items {
 	@Override
 	public void useItem(Hero theHero, DungeonCharacter opponent) {
 		System.out.println( theHero.getName() + " bribes " + opponent.getName() + " with a Potion of Wealth. " + opponent.getName() + " leaves.");
+		opponent.setHitPoints(0);
 
 	}
 

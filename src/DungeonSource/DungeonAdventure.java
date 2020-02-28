@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 public class DungeonAdventure {
 	
+	//Hidden Menu Code is 37
 	public static void main(String[] args)
 	{
 		do
 		{
 			GameStateManager.stateSetup();
+			
 		} while (playAgain(GameStateManager.getScanner()));
 		
 		//Added for correctness even though the program terminates just after this
