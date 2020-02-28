@@ -176,7 +176,7 @@ public abstract class Hero extends DungeonCharacter
 	public int artifactCount() {
 		int count = 0;
 		for(Items i : itemBag.combatBag) {
-			if(i.toString().contains("Artifact")) {
+			if(i.getName().contains("Artifact")) {
 				count++;
 			}
 		}

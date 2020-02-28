@@ -24,6 +24,10 @@ public class GameStateManager {
 		theHero.nonBattleChoices(scan);
 	}
 	
+	public static Scanner getScanner() {
+		return scan;
+	}
+	
 	public static int[] getCurrentRoom() {
 		return currentRoom;
 	}
@@ -32,9 +36,9 @@ public class GameStateManager {
 		return theHero;
 	}
 	
-	public static void pauseTime(int sleepTime) {
+	public static void pauseTime(double sleepTime) {
 		try {
-			Thread.sleep(sleepTime*1000);
+			Thread.sleep((int)(sleepTime*1000));
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -57,14 +61,6 @@ public class GameStateManager {
 		}
 	}
 	
-	public static Scanner getScanner() {
-		return scan;
-	}
-
-	public static void winGame() {
-		System.out.println("You have conquered the four pillars of OO and have become a code dungeon wizard.");	
-	}
-	
 	public static void visionPotionReveal() {
 		
 		try{System.out.println("North: " + 
@@ -83,5 +79,17 @@ public class GameStateManager {
 				gameDungeon[currentRoom[0]-1][currentRoom[1]].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
 		try{System.out.println("Northwest: " + 
 				gameDungeon[currentRoom[0]-1][currentRoom[1]-1].getClass().toString().substring(20).toUpperCase());}catch(ArrayIndexOutOfBoundsException e) {}
+	}
+	
+	public static void fullMapReveal() {
+		
+	}
+	
+	public static void exploredMap() {
+		
+	}
+	
+	public static void winGame() {
+		System.out.println("You have conquered the four pillars of OO and have become a code dungeon wizard.");	
 	}
 }

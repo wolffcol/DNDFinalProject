@@ -3,11 +3,7 @@ package DungeonSource;
 
 public class Dungeon
 {
-	
-	//Unimplemented
-	//private Room entrance;
-	//private Room exit;
-	
+		
     public static Room[][] generateDungeon(int dungeonSize){
     	Room[][] dungeon = new Room[dungeonSize][dungeonSize];
     	for(int i = 0; i < dungeon.length; i++) {

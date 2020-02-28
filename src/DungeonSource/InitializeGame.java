@@ -11,7 +11,11 @@ public class InitializeGame {
 	//Potentially add a difficulty that scales the size of the dungeon 4x4 is easy, 6x6 is normal, 8x8 is hard
 	public static statesHolder BuildGame() {
 		
-		System.out.println("You are a dungeon crawler adventuring into the depths to discover the Artifacts of OO.");
+		writeTypewriter("Never did you know choosing to be an adventurer would lead you into the depths of such a hellscape.\n\n"
+					  + "This place...the Object Oriented Principles Dungeons is like a nightmare.\n\n"
+					  + "Your mentor, Com Tapaul, has tasked you with retrieving the sacred Artifacts of OO.\n\n"
+					  + "It is no wonder he didn't come himself. You might not make it out alive.");
+		//System.out.println("You are a dungeon crawler adventuring into the depths to discover the Artifacts of OO.");
 		System.out.println("\nChoose Difficulty: "+ 
 						   "\n1. Easy: 4 by 4 Dungeon" +
 						   "\n2. Normal: 6 by 6 Dungeon" +
@@ -54,6 +58,15 @@ public class InitializeGame {
 	
 	public static int getDungeonSize() {
 		return dungeonDimension;
+	}
+	
+	public static void writeTypewriter(String str) {
+		
+		for(int i = 0; i < str.length(); i++) {
+			System.out.print(str.charAt(i));
+			GameStateManager.pauseTime(.1);
+		}
+		
 	}
 }
 

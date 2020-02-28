@@ -12,12 +12,12 @@ public class WildMage extends Hero {
 
 	public void wildMagic(DungeonCharacter opponent)
 	{
-		int blowPoints = (int)(Math.random() * 76) + 100;
-		System.out.println(getName() + " shoots random magic for " + blowPoints
+		int magicDamage = (int)(((Math.random() * 200-1) + 1)+1);
+		System.out.println(getName() + " shoots random magic for " + magicDamage
 									 + " damage!");
-		opponent.adjustHitPoints(blowPoints);
+		opponent.adjustHitPoints(magicDamage);
 
-	}//end crushingBlow method
+	}
 
 	public void attack(DungeonCharacter opponent)
 	{

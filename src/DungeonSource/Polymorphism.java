@@ -6,6 +6,7 @@ public class Polymorphism extends Items {
 
 	@Override
 	public void useItem(Hero theHero, DungeonCharacter opponent) {
+		System.out.println("This is a Work-In-Progress item. Suppose to allow you to re-class.");
 		ItemBag tempBag = theHero.getItemBag();
 		theHero = HeroFactory.createHero(GameStateManager.getScanner());
 		theHero.setItemBag(tempBag);
