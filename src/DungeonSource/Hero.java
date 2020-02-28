@@ -30,6 +30,7 @@ public abstract class Hero extends DungeonCharacter
   	
   		if(this.getClass().toString().contains("Warrior")) {
   			itemBag.addItem(new VisionPotion(), itemBag.getNonCombatArrayList());
+  			
   			itemBag.addItem(new VisionPotion(), itemBag.getNonCombatArrayList());
   			itemBag.addItem(new VisionPotion(), itemBag.getNonCombatArrayList());
   			itemBag.addItem(new HealingPotion(), itemBag.getCombatArrayList());
@@ -145,10 +146,10 @@ public abstract class Hero extends DungeonCharacter
 			    case 3: System.out.println(this.toString());
 			    	break;
 			    default:
-			        System.out.println("Choose Again \n=================\n");
+			        System.out.println("\nChoose Again \n=================\n");
 		    }
 
-		} while((choice != 1 && choice != 2 && choice != 3) || this.isAlive());
+		} while(this.isAlive());
 	}
 
 	public void battleChoices(DungeonCharacter opponent, Scanner scan)
@@ -161,7 +162,6 @@ public abstract class Hero extends DungeonCharacter
 		System.out.println("Number of turns this round is: " + numTurns);
 
 	}//end battleChoices
-
 
 	public void clearPotionEffects() {
 		this.chanceToBlock = trueBlock;	
@@ -182,8 +182,7 @@ public abstract class Hero extends DungeonCharacter
 		}
 		for(Items i : itemBag.nonCombatBag) {
 			if(i.getName().contains("Artifact")) {
-				count++;
-				
+				count++;	
 			}
 		}
 		return count;
